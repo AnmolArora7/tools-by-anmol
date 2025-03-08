@@ -1,0 +1,116 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(135deg, #6a11cb, #ff6a00);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-top: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Download Section */
+.downloads {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    gap: 30px;
+}
+
+.file {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, opacity 0.5s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.file h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.file p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.download-btn {
+    display: inline-block;
+    background: #ff6a00;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.download-btn:hover {
+    background: #ff4500;
+    transform: scale(1.05);
+}
+
+/* Animation */
+.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Scroll Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .file {
+        width: 90%;
+    }
+}
