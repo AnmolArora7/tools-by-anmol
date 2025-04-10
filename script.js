@@ -1,13 +1,14 @@
 // JavaScript for Smooth Animations & Interactivity
-
 document.addEventListener("DOMContentLoaded", function () {
-    // 🟣 Smooth scrolling behavior
-    document.documentElement.style.scrollBehavior = "smooth";
-
-    // 🟠 Welcome message animation
-    // setTimeout(() => {
-    //     alert("🔥 Welcome to the Download Hub! Enjoy the smooth experience.");
-    // }, 500);
+    // 🔥 Smooth scrolling for navigation links
+    document.querySelectorAll('.sticky-header a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 
     // 🔥 Fade-in animation for sections on scroll
     const fadeElements = document.querySelectorAll(".fade-in");
@@ -21,49 +22,43 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { threshold: 0.3 });
 
     fadeElements.forEach(element => observer.observe(element));
+});
 
-    // 🎭 Smooth parallax scrolling
-    window.addEventListener("scroll", function () {
-        const scrollPosition = window.scrollY;
-        document.querySelector(".hero").style.backgroundPositionY = `${scrollPosition * 0.5}px`;
-    });
-
-    // 🖱️ Hover effect: Buttons glow & scale up
-    const buttons = document.querySelectorAll(".download-btn");
-    buttons.forEach(btn => {
-        btn.addEventListener("mouseenter", () => {
-            btn.style.transform = "scale(1.1)";
-            btn.style.boxShadow = "0 0 15px rgba(255, 165, 0, 0.8)";
-        });
-
-        btn.addEventListener("mouseleave", () => {
-            btn.style.transform = "scale(1)";
-            btn.style.boxShadow = "0 0 5px rgba(255, 165, 0, 0.5)";
-        });
-
-        // Subtle shake effect when clicked
-        btn.addEventListener("click", () => {
-            btn.classList.add("shake");
-            setTimeout(() => {
-                btn.classList.remove("shake");
-            }, 500);
-        });
-    });
-
-    // 🎨 Dynamic text color change on scroll
-    const header = document.querySelector(".header-title");
-    window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        header.style.color = scrollY > 100 ? "#FF8C00" : "#FFFFFF";
-    });
-
-    // ✨ Random floating effect for small elements (simulating air movement)
-    const floatElements = document.querySelectorAll(".floating");
-    floatElements.forEach(el => {
-        setInterval(() => {
-            const xMove = (Math.random() * 10) - 5; // Random movement between -5px to +5px
-            const yMove = (Math.random() * 10) - 5;
-            el.style.transform = `translate(${xMove}px, ${yMove}px)`;
-        }, 3000);
+// smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+            ultraSmoothScroll(target);
+        }
     });
 });
+
+function ultraSmoothScroll(target) {
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 990; // Increase for a lazier feel (e.g., 2000)
+    let startTime = null;
+
+    function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); // Super smooth easing
+    }
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        window.scrollTo(0, startPosition + distance * easeOutExpo(progress));
+
+        if (elapsedTime < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
+
+// open links in new tab:
