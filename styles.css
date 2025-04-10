@@ -114,3 +114,111 @@ body {
         width: 90%;
     }
 }
+
+/* header portion
+/* Updated Sticky Header - Matching Theme */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #6a0dad, #c13584, #ff8c00); /* Purple-Pink-Orange Gradient */
+    padding: 14px 0;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+    border-radius: 10px; /* Soft rounded edges */
+}
+
+/* Navigation Bar */
+.sticky-header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Navigation Links */
+.sticky-header nav ul li {
+    display: inline;
+}
+
+.sticky-header nav ul li a {
+    text-decoration: none;
+    font-family: "Poppins", sans-serif; /* Same font as website */
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    text-transform: uppercase; /* Make it bold like the website heading */
+}
+
+/* Hover Effect */
+.sticky-header nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sticky-header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* code */
+
+
+.about-anmol {
+    text-align: center;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-icon img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon span {
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.social-icon:hover img {
+    transform: scale(1.1);
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+}
